@@ -13,18 +13,20 @@ ____
 
 ### INSTRUCTIONS
 
-This repository has a sequence of __Rnw__ files; each has been produced using a sweave document in RStudio. To make this work, please follow this steps:
+This repository has a sequence of __Rnw__ files; each has been produced using a sweave document in RStudio. 
 
-* Create a Zotero [account](https://www.zotero.org/download/) if you have not done it yet. Install the Zotero [app](https://www.zotero.org/download/) if you have done it yet. Open the app.
-* Install Latex, if you have not done it.
-* Sign in with your GitHub account
-* __Fork__ this _repo_ into your account.
+Before starting, you should already have a __ZOTERO__ and a __GITHUB__ account. Alsoa, you should have already installed  __LATEX__, as well as __R__ and __RStudio__. The ZOTERO and GITHUB desktop versions needs to be installed.
+
+Then, follow this steps please:
+
+* Sign in with __your__ GitHub account
+* __Fork__ this _repo_. You will take every content to your own Github account.
 * Open the __desktop__ version of GitHub.
 * __Clone__ the forked repo in your computer.
 * Open RStudio, locate and go into the cloned folder.
 * Install the following library in RStudio:
 	* stargazer
-* Test if you can create a paper in Latex  from RStudio using a sweave document.
+* There are four files, start with __*PaperInR_1.Rnw*__, after understanding how it worked, continue with the other ones (the higher the number the ore complex it is).
 
 
 
