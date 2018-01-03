@@ -1,0 +1,53 @@
+\documentclass[11pt]{article}
+
+\title{My first replicable Paper}
+\author{
+        MyFirstName MyLastName\\
+        Evans School of Public Policy and Governance\\
+        University of Washington\\
+        Seattle, WA 98115, \underline{United States}\\
+        \texttt{greatguy@uw.edu}
+}
+\date{\today}
+
+
+\begin{document}
+\SweaveOpts{concordance=TRUE}
+
+\maketitle
+
+
+\begin{abstract}
+This is an example on how to make a reproducible paper. We are using R from Rstudio, creating an RSweave document. This is a nice start to create a nice paper and get an A+. The next sections will show the steps taken.
+\end{abstract}
+
+\section{Introduction}\label{intro}
+This is my intro to my great paper, I will explain the cool things I can do with my new `computational thinking' powers combined with some Latex.
+
+This is my nice intro to my great paper, 
+I will explain the cool things I can do with my new `computational thinking' powers combined with some Latex.
+
+
+
+This is my nice intro to my great paper, 
+I will explain the cool things 
+I can do with my new `computational thinking' 
+powers
+combined with some Latex.
+
+\section{Explaining Labels}\label{outline}
+
+Sections may use a label\footnote{In fact, you can have a label wherever you think a future reference to that content might be needed.}. This label is needed for referencing. For example the next section has label \emph{datas}, so you can reference it by writing: As we see in section \ref{datas}.
+
+\section{Data analysis}\label{datas}
+
+Here you can explain how to get the data.
+
+\subsection{Exploration}\label{eda}
+
+Here, I start exploring the data. 
+
+\subsection{Modeling}\label{model}
+
+Here I can propose a regression model.
+\end{document}

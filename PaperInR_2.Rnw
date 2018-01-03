@@ -1,0 +1,121 @@
+\documentclass[11pt]{article}
+
+\title{My first replicable Paper}
+\author{
+        MyFirstName MyLastName\\
+        Evans School of Public Policy and Governance\\
+        University of Washington\\
+        Seattle, WA 98115, \underline{United States}\\
+        \texttt{greatguy@uw.edu}
+}
+\date{\today}
+
+
+\begin{document}
+\SweaveOpts{concordance=TRUE}
+
+\maketitle
+
+
+\begin{abstract}
+This is an example on how to make a reproducible paper. We are using R from Rstudio, creating an RSweave document. This is a nice start to create a nice paper and get an A+. The next sections will show the steps taken.
+\end{abstract}
+
+\section{Introduction}\label{intro}
+This is my intro to my great paper, I will explain the cool things I can do with my new `computational thinking' powers combined with some Latex.
+
+This is my nice intro to my great paper, 
+I will explain the cool things I can do with my new `computational thinking' powers combined with some Latex.
+
+
+
+This is my nice intro to my great paper, 
+I will explain the cool things 
+I can do with my new `computational thinking' 
+powers
+combined with some Latex.
+
+\section{Explaining Labels}\label{outline}
+
+Sections may use a label\footnote{In fact, you can have a label wherever you think a future reference to that content might be needed.}. This label is needed for referencing. For example the next section has label \emph{datas}, so you can reference it by writing: As we see in section \ref{datas}.
+
+\section{Data analysis}\label{datas}
+
+Here you can explain how to get the data.
+
+<<gettingData, echo=TRUE, eval=TRUE>>=
+# echo: show the code?
+# eval: run the code?
+
+# link has been previously shortened
+linkToData="https://goo.gl/So48s5"
+# getting the data from link:
+states=read.csv(linkToData)
+
+@
+
+\subsection{Exploration}\label{eda}
+
+Here, I start exploring the data. The first step is to know what variables I have, and in what scale they are:
+
+
+<<verifying, echo=FALSE,eval=TRUE>>=
+str(states)
+# you may try: str(states, width = 60, strict.width = "cut")
+@
+
+%% THIS IS HOW YOU CREATE BULLETS:
+
+A next step demands:
+\begin{itemize}
+  \item Knowing the \emph{central} and \emph{dispersion} values.
+  \item Visualizing the variables of interest.
+\end{itemize}
+
+Except for the column \emph{state} and \emph{region}, we can compute the centrality and spread measures for the other variables in the data. I will do that in Table\ref{measures} in the next page.
+
+%% HERE FORCING TO END THE PAGE!
+\clearpage  
+
+% THIS COMES IN NEXT PAGE:
+
+<<meanspread,echo=FALSE,results=tex,eval=TRUE>>=
+# notice "results=tex": give me the output in LATEX!!
+
+# stargazer need to be previously installed.
+library(stargazer)
+stargazer(states[,-c(1,8)],title = "Mean and Spread values", label = "measures")
+@
+
+As you saw, my Table \ref{measures} is nice. As you saw, the mean of the variable \emph{satMean} is \Sexpr{mean(states$satMean, na.rm = T)}. Now let's use a boxplot to explore location:
+
+%% above you could try \Sexpr{round(mean(states$satMean, na.rm = T),2)}
+
+%%%%%%%
+% figure 
+
+\begin{figure}[h]
+\centering
+<<location,echo=FALSE, fig=TRUE,eval=TRUE,height=4.6>>=
+# notice "fig=TRUE"
+par(mfrow=c(1,3))
+boxplot(states$satMean)
+boxplot(states$satDemand)
+boxplot(states$k12ExpenditurePupil)
+@
+\caption{Location of values}
+\label{plot_boxplots}
+\end{figure}
+
+\clearpage
+As we have a categorical variable, we could create a frequency table:
+
+<<tableCat2,echo=TRUE>>=
+tableF=data.frame(table(states$region),row.names = NULL)
+names(tableF)=c("Region", 'Frequency')
+tableF
+@
+
+It will look better in a while!
+
+\end{document}
