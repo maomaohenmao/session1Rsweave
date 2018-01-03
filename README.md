@@ -9,13 +9,14 @@
 
 # Making a reproducible Paper
 <br>
+
 ____
 
 ### INSTRUCTIONS
 
 This repository has a sequence of __Rnw__ files; each has been produced using a sweave document in RStudio. 
 
-Before starting, you should already have a __ZOTERO__ and a __GITHUB__ account. Alsoa, you should have already installed  __LATEX__, as well as __R__ and __RStudio__. The ZOTERO and GITHUB desktop versions needs to be installed.
+Before starting, you should already have a __ZOTERO__ and a __GITHUB__ account. Also, you should have already installed  __LATEX__, as well as __R__ and __RStudio__. The ZOTERO and GITHUB desktop versions needs to be installed.
 
 Then, follow this steps please:
 
