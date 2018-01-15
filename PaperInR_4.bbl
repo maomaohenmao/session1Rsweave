@@ -1,0 +1,53 @@
+\begin{thebibliography}{}
+
+\bibitem [\protect \citeauthoryear {%
+Magallanes~Reyes%
+}{%
+Magallanes~Reyes%
+}{%
+{\protect \APACyear {2017}}%
+}]{%
+magallanes_reyes_introducing_2017}
+\APACinsertmetastar {%
+magallanes_reyes_introducing_2017}%
+\begin{APACrefauthors}%
+Magallanes~Reyes, J\BPBI M.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYear{2017}.
+\newblock
+\APACrefbtitle {Introducing to data science for social and policy research:
+  collecting to organizing data with {R} and {Python}} {Introducing to data
+  science for social and policy research: collecting to organizing data with
+  {R} and {Python}}.
+\newblock
+\APACaddressPublisher{Cambridge, United Kingdom New York, USA Port Melbourne,
+  Australia Delhi, India Singapore}{Cambridge University Press}.
+\newblock
+\APACrefnote{OCLC: 998518603}
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
+Suo%
+}{%
+Suo%
+}{%
+{\protect \APACyear {2018}}%
+}]{%
+suo_meowmeow_2018}
+\APACinsertmetastar {%
+suo_meowmeow_2018}%
+\begin{APACrefauthors}%
+Suo, S.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYear{2018}.
+\newblock
+\APACrefbtitle {{MeowMeow}} {{MeowMeow}}.
+\newblock
+\APACaddressPublisher{}{UW}.
+\PrintBackRefs{\CurrentBib}
+
+\end{thebibliography}

@@ -1,0 +1,147 @@
+\documentclass[11pt]{article}
+
+\title{My first replicable Paper}
+\author{
+        MyFirstName MyLastName\\
+        Evans School of Public Policy and Governance\\
+        University of Washington\\
+        Seattle, WA 98115, \underline{United States}\\
+        \texttt{greatguy@uw.edu}
+}
+\date{\today}
+
+
+\usepackage{Sweave}
+\begin{document}
+\input{PaperInR_2-concordance}
+
+\maketitle
+
+
+\begin{abstract}
+This is an example on how to make a reproducible paper. We are using R from Rstudio, creating an RSweave document. This is a nice start to create a nice paper and get an A+. The next sections will show the steps taken.
+\end{abstract}
+
+\section{Introduction}\label{intro}
+This is my intro to my great paper, I will explain the cool things I can do with my new `computational thinking' powers combined with some Latex.
+
+This is my nice intro to my great paper, 
+I will explain the cool things I can do with my new `computational thinking' powers combined with some Latex.
+
+
+
+This is my nice intro to my great paper, 
+I will explain the cool things 
+I can do with my new `computational thinking' 
+powers
+combined with some Latex.
+
+\section{Explaining Labels}\label{outline}
+
+Sections may use a label\footnote{In fact, you can have a label wherever you think a future reference to that content might be needed.}. This label is needed for referencing. For example the next section has label \emph{datas}, so you can reference it by writing: As we see in section \ref{datas}.
+
+\section{Data analysis}\label{datas}
+
+Here you can explain how to get the data.
+
+\begin{Schunk}
+\begin{Sinput}
+> # echo: show the code?
+> # eval: run the code?
+> 
+> # link has been previously shortened
+> linkToData="https://goo.gl/So48s5"
+> # getting the data from link:
+> states=read.csv(linkToData)
+> 
+\end{Sinput}
+\end{Schunk}
+
+\subsection{Exploration}\label{eda}
+
+Here, I start exploring the data. The first step is to know what variables I have, and in what scale they are:
+
+
+\begin{Schunk}
+\begin{Soutput}
+'data.frame':	51 obs. of  8 variables:
+ $ state                : Factor w/ 51 levels "Alabama","Alaska",..: 1 2 3 4 5 6 7 8 9 10 ...
+ $ satMean              : int  991 920 932 1005 897 959 897 892 840 882 ...
+ $ satDemand            : num  0.08 0.41 0.26 0.06 0.47 0.29 0.81 0.61 0.71 0.48 ...
+ $ k12ExpenditurePupil  : int  3627 8330 4309 3700 4491 5064 7602 5865 9259 5276 ...
+ $ incomeHouseholsMedian: num  27.5 48.3 32.1 24.6 41.7 ...
+ $ diplomaHsAdults      : num  0.669 0.866 0.787 0.663 0.762 0.844 0.792 0.775 0.731 0.744 ...
+ $ collegeDegreeAdults  : num  0.157 0.23 0.203 0.133 0.234 0.27 0.272 0.214 0.333 0.183 ...
+ $ region               : Factor w/ 4 levels "Midwest","N. East",..: 3 4 4 3 4 4 2 3 3 3 ...
+\end{Soutput}
+\end{Schunk}
+
+%% THIS IS HOW YOU CREATE BULLETS:
+
+A next step demands:
+\begin{itemize}
+  \item Knowing the \emph{central} and \emph{dispersion} values.
+  \item Visualizing the variables of interest.
+\end{itemize}
+
+Except for the column \emph{state} and \emph{region}, we can compute the centrality and spread measures for the other variables in the data. I will do that in Table\ref{measures} in the next page.
+
+%% HERE FORCING TO END THE PAGE!
+\clearpage  
+
+% THIS COMES IN NEXT PAGE:
+
+% Table created by stargazer v.5.2 by Marek Hlavac, Harvard University. E-mail: hlavac at fas.harvard.edu
+% Date and time: ÖÜËÄ, 1ÔÂ 04, 2018 - 9:19:13
+\begin{table}[!htbp] \centering 
+  \caption{Mean and Spread values} 
+  \label{measures} 
+\begin{tabular}{@{\extracolsep{5pt}}lccccc} 
+\\[-1.8ex]\hline 
+\hline \\[-1.8ex] 
+Statistic & \multicolumn{1}{c}{N} & \multicolumn{1}{c}{Mean} & \multicolumn{1}{c}{St. Dev.} & \multicolumn{1}{c}{Min} & \multicolumn{1}{c}{Max} \\ 
+\hline \\[-1.8ex] 
+satMean & 51 & 944.098 & 66.935 & 832 & 1,093 \\ 
+satDemand & 51 & 0.358 & 0.262 & 0.040 & 0.810 \\ 
+k12ExpenditurePupil & 51 & 5,235.961 & 1,401.155 & 2,960 & 9,259 \\ 
+incomeHouseholsMedian & 51 & 33.957 & 6.423 & 23.465 & 48.618 \\ 
+diplomaHsAdults & 51 & 0.763 & 0.056 & 0.643 & 0.866 \\ 
+collegeDegreeAdults & 51 & 0.200 & 0.042 & 0.123 & 0.333 \\ 
+\hline \\[-1.8ex] 
+\end{tabular} 
+\end{table} 
+As you saw, my Table \ref{measures} is nice. As you saw, the mean of the variable \emph{satMean} is 944.098039215686. Now let's use a boxplot to explore location:
+
+%% above you could try 944.1
+
+%%%%%%%
+% figure 
+
+\begin{figure}[h]
+\centering
+\includegraphics{PaperInR_2-location}
+\caption{Location of values}
+\label{plot_boxplots}
+\end{figure}
+
+\clearpage
+As we have a categorical variable, we could create a frequency table:
+
+\begin{Schunk}
+\begin{Sinput}
+> tableF=data.frame(table(states$region),row.names = NULL)
+> names(tableF)=c("Region", 'Frequency')
+> tableF
+\end{Sinput}
+\begin{Soutput}
+   Region Frequency
+1 Midwest        12
+2 N. East         9
+3   South        17
+4    West        13
+\end{Soutput}
+\end{Schunk}
+
+It will look better in a while!
+
+\end{document}
